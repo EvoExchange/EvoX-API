@@ -12,6 +12,76 @@ X-EVOX_API_KEY: YOUR_API_KEY
 ```
 
 ## Endpoints
+### Place a trade
+```bash
+POST /order
+```
+
+Place an order and execute a trade if it matches orders in the book.
+
+**Request Params**
+- `id` (string, required): The id of the base currency (smart contract address).
+
+**Request Body**
+- `order_size` (string, required): The amount of order (string number).
+- `order_price` (string, required): The price of order (string number).
+- `order_side` (string, required): The side of order (buy or sell).
+- `order_variant` (string, required): The variant of order (market or limit).
+- `address` (string, required): The taker wallet address.
+- `margined` (bool, required): The margin status of order (default: false).
+
+**Example Request**
+```bash
+POST /order?id=0x1E67a46D59527B8a77D1eC7C6EEc0B06FcF31E28
+Content-Type: application/json
+X-EVOX_API_KEY: YOUR_API_KEY
+
+{
+    "order_size": "100",
+    "order_price": "3.45",
+    "order_side": "BUY",
+    "order_variant": "MARKET",
+    "address": "0x19E75eD87d138B18263AfE40f7C16E4a5ceCB585",
+    "margined": false
+}
+```
+
+**Response**
+
+Status Code: `200`
+- `_tradeid` (string): The id of trade.
+- `token_1` (string): The address of base currency.
+- `token_2` (string): The address of target currency.
+- `buyers` (array): The array of buyers' addresses.
+- `sellers` (array): The array of sellers' addresses.
+- `buy_amnts` (array): The array of trade amounts in target currency.
+- `sell_amnts` (array): The array of trade amounts in base currency.
+
+Status Code: `400` and `403`
+- `error` (string): The error message.
+
+**Example Response**
+
+Status Code: `200`
+```bash
+{
+    "_tradeid": "6605a79b61d879dcefc2da48",
+    "token_1": "0x1E67a46D59527B8a77D1eC7C6EEc0B06FcF31E28",
+    "token_2": "0xaBAD60e4e01547E2975a96426399a5a0578223Cb",
+    "buyers": ["0xa60c6a918502174CA68EB335Ae28471103460783"],
+    "sellers": ["0x92F1bDc41B8E7863459DA1cD6Fc8A00aa69CcbF6"],
+    "buy_amnts": ["33300000000000000000"],
+    "sell_amnts": ["10000000000000000000"]
+}
+```
+
+Status Code: `400` and `403`
+```bash
+{
+    "error": "The order price is missing or is not valid."
+}
+```
+
 ### Place an order in the book only
 ```bash
 POST /order/place
