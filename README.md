@@ -169,14 +169,12 @@ An array filled with order book details.
         "_id": {
             "$oid": "66037c0c5a6cf015284d56c2"
         },
-        "order_id": 0,
         "order_size": "1",
         "address": "0x400DF2b3Cc8702C5b3260171Eb2742d695A0a841",
         "order_price": "3.3217",
         "asset_type": "[]",
         "order_variant": "LIMIT",
         "order_side": "BUY",
-        "margined": false,
         "timestamp": "1711504396",
         "filled_size": "0",
         "filled_part": [],
@@ -230,14 +228,12 @@ Status Code: `200`
         "_id": {
             "$oid": "66037c0c5a6cf015284d56c2"
         },
-        "order_id": 0,
         "order_size": "1",
         "address": "0x400DF2b3Cc8702C5b3260171Eb2742d695A0a841",
         "order_price": "3.3217",
         "asset_type": "[]",
         "order_variant": "LIMIT",
         "order_side": "BUY",
-        "margined": false,
         "timestamp": "1711504396",
         "filled_size": "0",
         "filled_part": [],
