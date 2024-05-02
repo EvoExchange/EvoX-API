@@ -26,7 +26,7 @@ Place an order and execute a trade if it matches orders in the book.
 - `order_size` (string, required): The amount of order (string number).
 - `order_price` (string, required): The price of order (string number).
 - `order_side` (string, required): The side of order (buy or sell).
-- `order_variant` (string, required): The variant of order (market or limit).
+- `order_variant` (string, required): The variant of order (MARKET, LIMIT or STOP).
 - `address` (string, required): The taker wallet address.
 - `margined` (bool, required): The margin status of order (default: false).
 
@@ -70,8 +70,8 @@ Status Code: `200`
     "token_2": "0xaBAD60e4e01547E2975a96426399a5a0578223Cb",
     "buyers": ["0xa60c6a918502174CA68EB335Ae28471103460783"],
     "sellers": ["0x92F1bDc41B8E7863459DA1cD6Fc8A00aa69CcbF6"],
-    "buy_amnts": ["33300000000000000000"],
-    "sell_amnts": ["10000000000000000000"]
+    "buy_amnts": ["345000000000000000000"],
+    "sell_amnts": ["100000000000000000000"]
 }
 ```
 
@@ -82,7 +82,7 @@ Status Code: `400` and `403`
 }
 ```
 
-### Place an order in the book only
+### Place an order in the book only(Post-Only)
 ```bash
 POST /order/place
 ```
@@ -194,6 +194,7 @@ Cancel the specific order from the book.
 
 **Request Params**
 - `id` (string, required): The id of the base currency (smart contract address).
+- `address` (string, required): The trader's wallet address.
 
 **Request Body**
 - `_id` (string, required): The document id of an order to be canceled.
@@ -201,7 +202,7 @@ Cancel the specific order from the book.
 
 **Example Request**
 ```bash
-POST /order?id=0x1E67a46D59527B8a77D1eC7C6EEc0B06FcF31E28
+POST /order?id=0x1E67a46D59527B8a77D1eC7C6EEc0B06FcF31E28&address=0x19E75eD87d138B18263AfE40f7C16E4a5ceCB585
 Content-Type: application/json
 X-EVOX_API_KEY: YOUR_API_KEY
 
@@ -229,7 +230,7 @@ Status Code: `200`
             "$oid": "66037c0c5a6cf015284d56c2"
         },
         "order_size": "1",
-        "address": "0x400DF2b3Cc8702C5b3260171Eb2742d695A0a841",
+        "address": "0x19E75eD87d138B18263AfE40f7C16E4a5ceCB585",
         "order_price": "3.3217",
         "asset_type": "[]",
         "order_variant": "LIMIT",
