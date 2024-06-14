@@ -8,7 +8,7 @@ Base URL: https://api.evo.exchange
 ## Authentication
 The Evo Exchange API uses API keys for authentication. Include your API key in the request headers as follows:
 ```
-X-EVOX_API_KEY: YOUR_API_KEY
+EvoX-API-Key: YOUR_API_KEY
 ```
 
 ## Endpoints
@@ -34,7 +34,7 @@ Place an order and execute a trade if it matches orders in the book.
 ```bash
 POST /order?id=0x1E67a46D59527B8a77D1eC7C6EEc0B06FcF31E28
 Content-Type: application/json
-X-EVOX_API_KEY: YOUR_API_KEY
+EvoX-API-Key: YOUR_API_KEY
 
 {
     "order_size": "100",
@@ -103,7 +103,7 @@ Place only trades that go to the book, if they are matching trades it cancels th
 ```bash
 POST /order/place?id=0x1E67a46D59527B8a77D1eC7C6EEc0B06FcF31E28
 Content-Type: application/json
-X-EVOX_API_KEY: YOUR_API_KEY
+EvoX-API-Key: YOUR_API_KEY
 
 {
     "order_size": "100",
@@ -155,7 +155,7 @@ Retrieve a list of order book details.
 ```bash
 GET /order?id=0x1E67a46D59527B8a77D1eC7C6EEc0B06FcF31E28&address=0x19E75eD87d138B18263AfE40f7C16E4a5ceCB585
 Content-Type: application/json
-X-EVOX_API_KEY: YOUR_API_KEY
+EvoX-API-Key: YOUR_API_KEY
 ```
 
 **Response**
@@ -204,7 +204,7 @@ Cancel the specific order from the book.
 ```bash
 POST /order?id=0x1E67a46D59527B8a77D1eC7C6EEc0B06FcF31E28&address=0x19E75eD87d138B18263AfE40f7C16E4a5ceCB585
 Content-Type: application/json
-X-EVOX_API_KEY: YOUR_API_KEY
+EvoX-API-Key: YOUR_API_KEY
 
 {
     "_id": "65fdb2e4a24776bf729088f4",
